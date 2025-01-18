@@ -42,35 +42,35 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(U4C1O12T_Tarefa_WLS C CXX ASM)
+project(ET_Tarefa_01_GPIO C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(U4C1O12T_Tarefa_WLS U4C1O12T_Tarefa_WLS.c )
+add_executable(ET_Tarefa_01_GPIO ET_Tarefa_01_GPIO.c )
 
-pico_set_program_name(U4C1O12T_Tarefa_WLS "U4C1O12T_Tarefa_WLS")
-pico_set_program_version(U4C1O12T_Tarefa_WLS "0.1")
+pico_set_program_name(ET_Tarefa_01_GPIO "ET_Tarefa_01_GPIO")
+pico_set_program_version(ET_Tarefa_01_GPIO "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(U4C1O12T_Tarefa_WLS 1)
-pico_enable_stdio_usb(U4C1O12T_Tarefa_WLS 1)
+pico_enable_stdio_uart(ET_Tarefa_01_GPIO 1)
+pico_enable_stdio_usb(ET_Tarefa_01_GPIO 1)
 
 # Add the standard library to the build
-target_link_libraries(U4C1O12T_Tarefa_WLS
+target_link_libraries(ET_Tarefa_01_GPIO
         pico_stdlib)
 
 # Add the standard include files to the build
-target_include_directories(U4C1O12T_Tarefa_WLS PRIVATE
+target_include_directories(ET_Tarefa_01_GPIO PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Add any user requested libraries
-target_link_libraries(U4C1O12T_Tarefa_WLS 
+target_link_libraries(ET_Tarefa_01_GPIO 
         
         )
 
-pico_add_extra_outputs(U4C1O12T_Tarefa_WLS)
+pico_add_extra_outputs(ET_Tarefa_01_GPIO)
 

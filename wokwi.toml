@@ -1,4 +1,4 @@
 [wokwi]
 version = 1
-firmware = 'build/U4C1O12T_Tarefa_WLS.uf2'
-elf = 'build/U4C1O12T_Tarefa_WLS.elf'
+firmware = 'build/ET_Tarefa_01_GPIO.uf2'
+elf = 'build/ET_Tarefa_01_GPIO.elf'
