@@ -1,6 +1,19 @@
 /*
- * Finalidade: Fazer o Buzzer tocar em uma frequência escolhida pelo teclado
- */
+* Finalidade: Fazer o Buzzer tocar em uma frequência escolhida pelo teclado
+*
+* Funcionamento: aperte números do teclado formando um número, quando terminar, por 
+* exemplo de inserir 200, aperte na tecla "jogo da velha" para registrar a frequência
+* escolhida. Caso apertou um número errado, aperte em "asterístico" para zerar tudo. 
+* Observe que a cada aperto de tecla, os três LEDs piscam junto, indicando que está sendo
+* reconhecido seu comando. As teclas A,B e C testam os LEDs individualmente, e a tecla D
+* toca o Buzzer por 2,5 segundos na frequência escolhida. A frequência padrão de início
+* é 1 kHz e ao executar uma frequência observe o acender dos LEDs, pois eles seguem o
+* seguinte padrão:
+*      Led Azul acende quando a frequência é inaudível (abaixo de 20 Hz)
+*      Led Verde acende quando a frequência for audível (entre 20 Hz e 20 kHz)
+*      Led Vermelho acende quando a frequência for inaudível (acima de 20 kHz)
+* Quando o Buzzer estiver tocando, aguarde para inserir dados no teclado.
+*/
 
 #include <stdio.h>
 
