@@ -55,7 +55,24 @@ void acionaLED_Sinalizando(uint32_t frequencia_h);
 // André Lima + main + Descrição
 void avaliaComando();
 
-int main() { return 0; }
+int main() { 
+  
+  stdio_init_all();
+
+  // chamada das funções que inicializam e configuram as portas
+  inicializacaoLEDs();
+  inicializacaoBuzzer();
+  inicializacaoTeclado();
+  
+  //definição da frequência padrão inicializada a ser tocada pelo buzzer, e também a inicialização da variável de controle de inserção dos valores de frequência pelo teclado
+  frequencia_escolhida = 1000;
+  somador=0;
+  while (true) {
+    // em loop contínuo a função abaixo é executada com o intuito de capturar os comandos via teclado.
+    lerTeclado();
+    
+  }
+}
 
 // Função responsável por inicializar os LEDs
 void inicializacaoLEDs(){
