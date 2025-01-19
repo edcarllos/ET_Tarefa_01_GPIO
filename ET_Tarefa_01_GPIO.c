@@ -36,6 +36,13 @@ int somador;
 uint columns[4] = {4, 3, 2, 28};
 uint rows[4] = {8, 7, 6, 5};
 
+int TECLADO[16] = {
+    1, 2 , 3, 10,
+    4, 5 , 6, 11,
+    7, 8 , 9, 12,
+    13, 0 , 14, 15
+};
+
 // COMENTEM O CÓDIGO!!!!!!!!!!
 
 // David + Vídeo
