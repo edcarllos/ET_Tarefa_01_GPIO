@@ -106,8 +106,28 @@ void desligaTodosLEDs(){
 }
 
 
-//  Tiago
-void tocaBuzzer(uint32_t frequencia_h, uint32_t intervalo_us);
+// Função para controlar o buzzer, gerando um som de frequência específica por um intervalo de tempo.
+// Parâmetros:
+// - frequencia_h: Frequência desejada para o som, em hertz (Hz).
+// - intervalo_us: Duração total do som, em microssegundos (µs).
+void tocaBuzzer(uint32_t frequencia_h,uint32_t intervalo_us){
+  uint32_t param = (intervalo_us/frequencia_h);
+  uint32_t ciclo1 = param/4;
+  uint32_t ciclo2 = param-ciclo1;
+  uint32_t quant = intervalo_us/param;
+  acionaLED_Sinalizando(frequencia_h);
+  if((frequencia_h>20)&&(frequencia_h<20000)){
+    for(int i=0;i<quant;i++){
+      gpio_put(GPIO_BUZZER,true);
+      sleep_us(ciclo1);
+      gpio_put(GPIO_BUZZER,false);
+      sleep_us(ciclo2);
+    }
+  }else{
+    sleep_us(intervalo_us);
+  }
+  desligaTodosLEDs();
+}
 
 // Função para acender o LED vermelho por um determinado período de tempo
 // Parâmetro: tempo - duração em milissegundos que o LED ficará aceso
