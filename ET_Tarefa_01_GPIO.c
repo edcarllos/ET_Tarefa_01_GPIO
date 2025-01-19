@@ -112,6 +112,12 @@ void avaliaComando(){
         }
         // Os três LEDs piscam para sinalizar ao usuário que o sistema reconheceu que a tecla foi pressionada
         acionarTodosLEDs(200);
+      }else{
+        // Bloco responsável para zerar o número que foi digitado até o momento caso o botão asteristico for pressionado
+        if(TECLADO[tecla]==ASTERISTICO){
+          somador=0;
+          acionarTodosLEDs(200);
+        }
       }
     }
 }
