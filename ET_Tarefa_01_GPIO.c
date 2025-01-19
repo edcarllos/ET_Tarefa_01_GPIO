@@ -38,6 +38,19 @@ uint rows[4] = {8, 7, 6, 5};
 
 int TECLADO[16] = {1, 2, 3, 10, 4, 5, 6, 11, 7, 8, 9, 12, 13, 0, 14, 15};
 
+void inicializacaoLEDs();
+void inicializacaoBuzzer();
+void inicializacaoTeclado();
+void lerTeclado();
+void desligaTodosLEDs();
+void tocaBuzzer(uint32_t frequencia_h, uint32_t intervalo_us);
+void acionaLED_R(uint32_t tempo);
+void acionaLED_G(uint32_t tempo);
+void acionaLED_B(uint32_t tempo);
+void acionarTodosLEDs(uint32_t tempo);
+void acionaLED_Sinalizando(uint32_t frequencia_h);
+void avaliaComando();
+
 // Função para ler o teclado matricial
 // Verifica qual tecla foi pressionada, identifica a linha e a coluna
 // correspondentes e define a tecla pressionada com base no índice da matriz.
@@ -161,39 +174,6 @@ void tocaBuzzer(uint32_t frequencia_h, uint32_t intervalo_us) {
   // Desliga todos os LEDs ao final da execução da função, indicando o término
   // do som.
   desligaTodosLEDs();
-}
-
-// Função para acender o LED vermelho por um determinado período de tempo
-// Parâmetro: tempo - duração em milissegundos que o LED ficará aceso
-void acionaLED_R(uint32_t tempo) {
-  // Liga o LED
-  gpio_put(GPIO_LED_R, true);
-  // Mantém o LED ligado pelo tempo especificado
-  sleep_ms(tempo);
-  // Desliga o LED
-  gpio_put(GPIO_LED_R, false);
-}
-
-// Função para acender o LED verde por um determinado período de tempo
-// Parâmetro: tempo - duração em milissegundos que o LED ficará aceso
-void acionaLED_G(uint32_t tempo) {
-  // Liga o LED
-  gpio_put(GPIO_LED_G, true);
-  // Mantém o LED ligado pelo tempo especificado
-  sleep_ms(tempo);
-  // Desliga o LED
-  gpio_put(GPIO_LED_G, false);
-}
-
-// Função para acender o LED azul por um determinado período de tempo
-// Parâmetro: tempo - duração em milissegundos que o LED ficará aceso
-void acionaLED_B(uint32_t tempo) {
-  // Liga o LED
-  gpio_put(GPIO_LED_B, true);
-  // Mantém o LED ligado pelo tempo especificado
-  sleep_ms(tempo);
-  // Desliga o LED
-  gpio_put(GPIO_LED_B, false);
 }
 
 // Função teste para ativar todos os LEDs
