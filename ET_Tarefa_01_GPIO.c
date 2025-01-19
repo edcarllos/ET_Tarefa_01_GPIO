@@ -118,6 +118,15 @@ void avaliaComando(){
           somador=0;
           acionarTodosLEDs(200);
         }
+        // Bloco responsável por cadastrar oficialmente a frequência inserida no teclado, de forma que toda vez que pedir pra tocar o Buzzer, esta frequência cadastrada irá tocar.  Isto é feito quando o botão jogo da velha for pressionado
+        if(TECLADO[tecla]==JOGO_DA_VELHA){
+          frequencia_escolhida = somador;
+          printf("Frequencia escolhida: %d\n",frequencia_escolhida);
+          somador=0;
+          //Os três LEDs piscam para sinalizar ao usuário que o sistema reconheceu que o cadastro foi feito
+          acionarTodosLEDs(200);
+        }
+        
       }
     }
 }
