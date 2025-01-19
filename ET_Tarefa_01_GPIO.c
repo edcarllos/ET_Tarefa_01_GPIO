@@ -122,6 +122,7 @@ void acionaLED_B(uint32_t tempo){
   sleep_ms(tempo);
   // Desliga o LED 
   gpio_put(GPIO_LED_B, false);
+}
 
 // Função para controlar o buzzer, gerando um som de frequência específica
 // durante um intervalo de tempo. Parâmetros:
