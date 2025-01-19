@@ -98,6 +98,7 @@ void inicializacaoTeclado(){
   }
 }
 
+
 // Função que decide após cada aperto de tecla o que vai acontecer
 void avaliaComando(){
   // Verifica se houve alguma tecla válida apertada
@@ -138,8 +139,12 @@ void avaliaComando(){
         if(TECLADO[tecla]==C){
           acionaLED_B(1000);
         }
-        
+        //Toca o Buzzer na frequência cadastrada por 2,5 segundos caso o botão D for pressionado
+        if(TECLADO[tecla]==D){
+          tocaBuzzer(frequencia_escolhida,2500000);
+        }
       }
     }
 }
+
 
