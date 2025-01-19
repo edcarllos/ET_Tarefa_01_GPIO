@@ -97,3 +97,21 @@ void inicializacaoTeclado(){
     gpio_put(rows[i], true);
   }
 }
+
+// Função que decide após cada aperto de tecla o que vai acontecer
+void avaliaComando(){
+  // Verifica se houve alguma tecla válida apertada
+  if(tecla>=0){
+      // Verifica se a tecla pressionada é um dos números
+      if(TECLADO[tecla]<10){
+        // Esse bloco é responsável por concatenar os números formando um numero com unidades, dezenas, centenas, etc.
+        if(somador==0){
+          somador = TECLADO[tecla];
+        }else{
+          somador = somador*10+TECLADO[tecla]; 
+        }
+        // Os três LEDs piscam para sinalizar ao usuário que o sistema reconheceu que a tecla foi pressionada
+        acionarTodosLEDs(200);
+      }
+    }
+}
