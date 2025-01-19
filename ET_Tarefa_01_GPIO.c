@@ -93,7 +93,6 @@ void inicializacaoTeclado(){
     gpio_set_dir(columns[i],GPIO_IN);
     //configura os pinos das linhas como saída
     gpio_set_dir(rows[i],GPIO_OUT);
-    //configura pull up
     gpio_put(rows[i], true);
   }
 }
