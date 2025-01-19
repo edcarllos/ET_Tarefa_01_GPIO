@@ -91,6 +91,38 @@ void desligaTodosLEDs() {
   gpio_put(GPIO_LED_B, false);  // Desliga o LED azul
 }
 
+// Função para acender o LED vermelho por um determinado período de tempo
+// Parâmetro: tempo - duração em milissegundos que o LED ficará aceso
+void acionaLED_R(uint32_t tempo){
+  // Liga o LED
+  gpio_put(GPIO_LED_R, true);
+  // Mantém o LED ligado pelo tempo especificado
+  sleep_ms(tempo);
+  // Desliga o LED 
+  gpio_put(GPIO_LED_R, false);
+}
+
+// Função para acender o LED verde por um determinado período de tempo
+// Parâmetro: tempo - duração em milissegundos que o LED ficará aceso
+void acionaLED_G(uint32_t tempo){
+  // Liga o LED 
+  gpio_put(GPIO_LED_G, true);
+  // Mantém o LED ligado pelo tempo especificado
+  sleep_ms(tempo);
+  // Desliga o LED
+  gpio_put(GPIO_LED_G, false);
+}
+
+// Função para acender o LED azul por um determinado período de tempo
+// Parâmetro: tempo - duração em milissegundos que o LED ficará aceso
+void acionaLED_B(uint32_t tempo){
+  // Liga o LED 
+  gpio_put(GPIO_LED_B, true);
+  // Mantém o LED ligado pelo tempo especificado
+  sleep_ms(tempo);
+  // Desliga o LED 
+  gpio_put(GPIO_LED_B, false);
+
 // Função para controlar o buzzer, gerando um som de frequência específica
 // durante um intervalo de tempo. Parâmetros:
 // - frequencia_h: Frequência desejada para o som, em hertz (Hz).
