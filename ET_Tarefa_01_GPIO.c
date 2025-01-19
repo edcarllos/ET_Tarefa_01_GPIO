@@ -126,7 +126,20 @@ void avaliaComando(){
           //Os três LEDs piscam para sinalizar ao usuário que o sistema reconheceu que o cadastro foi feito
           acionarTodosLEDs(200);
         }
+        // Testa o LED Vermelho caso o botão A for pressionado
+        if(TECLADO[tecla]==A){
+          acionaLED_R(1000);
+        }
+        //Testa o LED Verde caso o botão B for pressionado
+        if(TECLADO[tecla]==B){
+          acionaLED_G(1000);
+        }
+        //Testa o LED Azul caso o botão C for pressionado
+        if(TECLADO[tecla]==C){
+          acionaLED_B(1000);
+        }
         
       }
     }
 }
+
