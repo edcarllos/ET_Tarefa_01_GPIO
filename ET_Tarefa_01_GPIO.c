@@ -106,17 +106,27 @@ void desligaTodosLEDs(){
 }
 
 
-// Função para controlar o buzzer, gerando um som de frequência específica por um intervalo de tempo.
+// Função para controlar o buzzer, gerando um som de frequência específica durante um intervalo de tempo.
 // Parâmetros:
 // - frequencia_h: Frequência desejada para o som, em hertz (Hz).
 // - intervalo_us: Duração total do som, em microssegundos (µs).
 void tocaBuzzer(uint32_t frequencia_h,uint32_t intervalo_us){
+
+   // Calcula o período do som em microssegundos.
   uint32_t param = (intervalo_us/frequencia_h);
+  // Define o tempo em que o buzzer ficará ligado dentro de um ciclo (25% do período total).
   uint32_t ciclo1 = param/4;
+  // Define o tempo em que o buzzer ficará desligado  dentro de um ciclo (restante do período).
   uint32_t ciclo2 = param-ciclo1;
+// Calcula o número de ciclos completos que cabem no intervalo total.
   uint32_t quant = intervalo_us/param;
+
+   // Aciona um LED para  para sinalizar a frequência escolhida.
   acionaLED_Sinalizando(frequencia_h);
+
+  // Verifica se a frequência está dentro do intervalo audível (20 Hz a 20 kHz).
   if((frequencia_h>20)&&(frequencia_h<20000)){
+     // Gera o som com a frequência desejada, repetindo o número de ciclos calculado.
     for(int i=0;i<quant;i++){
       gpio_put(GPIO_BUZZER,true);
       sleep_us(ciclo1);
@@ -124,8 +134,10 @@ void tocaBuzzer(uint32_t frequencia_h,uint32_t intervalo_us){
       sleep_us(ciclo2);
     }
   }else{
+     // Caso a frequência esteja fora do intervalo audível, apenas espera pelo tempo total.
     sleep_us(intervalo_us);
   }
+  // Desliga todos os LEDs ao final da execução da função, indicando o término do som.
   desligaTodosLEDs();
 }
 
