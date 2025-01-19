@@ -32,10 +32,59 @@ void inicializacaoBuzzer();
 
 void inicializacaoTeclado();
 
-// James
-void lerTeclado();
 
-void desligaTodosLEDs();
+void lerTeclado(){
+// Função para ler o teclado matricial
+// Verifica qual tecla foi pressionada, identifica a linha e a coluna correspondentes
+// e define a tecla pressionada com base no índice da matriz.
+// Após identificar a tecla, chama a função avaliaComando() para executar a ação correspondente.
+
+  int col=-1;
+  // Identifica qual coluna do teclado foi ativada
+  for(int i=0;i<4;i++){
+    if(gpio_get(columns[i])){
+      col=i;
+    }
+  }
+  int row=-1;
+  if(col!=-1){
+    // Inicialmente, desativa todas as linhas
+    for(int i=0;i<4;i++){
+      gpio_put(rows[i],false);
+    }
+    
+    // Ativa uma linha por vez para identificar a tecla pressionada
+    for(row=0;row<4;row++){
+      gpio_put(rows[row],true);
+      if(gpio_get(columns[col])){
+        break;
+      }
+    }
+    // Restaura as linhas desativadas para evitar interferências
+    for(int i=row+1;i<4;i++){
+      gpio_put(rows[i],true);
+    }
+  }
+  
+  // Calcula o índice da tecla pressionada com base na linha e coluna identificadas
+  tecla = row*4+col;
+
+  // Pequeno atraso para evitar leituras repetidas
+  busy_wait_us(50000);
+
+  // Avalia o comando correspondente à tecla pressionada
+  avaliaComando();
+}
+
+// Função para desligar todos os LEDs
+// Garante que todos os LEDs (vermelho, verde e azul) estão apagados
+// Chamado após o uso dos LEDs para evitar que fiquem ligados indevidamente.
+void desligaTodosLEDs(){
+  gpio_put(GPIO_LED_R,false); // Desliga o LED vermelho
+  gpio_put(GPIO_LED_G,false); // Desliga o LED verde
+  gpio_put(GPIO_LED_B,false); // Desliga o LED azul
+}
+
 
 //  Tiago
 void tocaBuzzer(uint32_t frequencia_h, uint32_t intervalo_us);
